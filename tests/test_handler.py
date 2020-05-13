@@ -4,6 +4,10 @@ from moto import mock_dynamodb2
 
 from handler import scan_table
 
+# moto needs these:
+os.environ["AWS_ACCESS_KEY_ID"] = "foo"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "bar"
+os.environ["AWS_DEFAULT_REGION"] = "eu-west-1"
 
 class TestHandler:
     @mock_dynamodb2
