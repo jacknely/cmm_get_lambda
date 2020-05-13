@@ -1,4 +1,4 @@
-service: cmm-get
+service: cmm
 
 provider:
   name: aws
@@ -12,7 +12,7 @@ package:
   artifact: package.zip
 
 functions:
-  job:
+  get:
     handler: handler.lambda_handler
     events:
     tags:
