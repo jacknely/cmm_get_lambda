@@ -1,4 +1,9 @@
 import os
+# moto needs these:
+os.environ["AWS_ACCESS_KEY_ID"] = "foo"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "bar"
+os.environ["AWS_DEFAULT_REGION"] = "eu-west-1"
+
 import boto3
 import pytest
 from moto import mock_dynamodb2
@@ -6,13 +11,9 @@ from moto import mock_dynamodb2
 from handler import scan_table
 
 class TestHandler:
-    
+
     @mock_dynamodb2
     def test_scan_params(self):
-        # moto needs these:
-        os.environ["AWS_ACCESS_KEY_ID"] = "foo"
-        os.environ["AWS_SECRET_ACCESS_KEY"] = "bar"
-        os.environ["AWS_DEFAULT_REGION"] = "eu-west-1"
         table_name = "cmm.results"
         dynamodb = boto3.resource("dynamodb", region_name="eu-west-1")
 
