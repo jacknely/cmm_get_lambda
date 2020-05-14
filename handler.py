@@ -46,15 +46,13 @@ def lambda_handler(event, context):
     # program_id=Z02 FRT VAL LH CYC L3&point=L02A712AHP_Y
     if event["queryStringParameters"]:
         results = scan_table(**event["queryStringParameters"])
-        results_json = json.dumps(results)
-        return {"statusCode": 200, "body": results_json}
     else:
         results = scan_table()
-        results_json = json.dumps(results)
-        return {"statusCode": 200, "body": results}
+    return {"statusCode": 200, "body": json.dumps(results)}
+
 
 
 if __name__ == "__main__":
     queries = {"program_id": "Z02 FRT VAL LH CYC L3", "point": "L02A712AHP_Y"}
-    results = scan_table(**queries)
+    results = scan_table()
     print(json.dumps(results))
