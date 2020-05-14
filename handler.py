@@ -49,7 +49,9 @@ def lambda_handler(event, context):
         results_json = json.dumps(results)
         return {"statusCode": 200, "body": results_json}
     else:
-        return {"statusCode": 404, "body": "QueryError: Provide query parameters"}
+        results = scan_table()
+        results_json = json.dumps(results)
+        return {"statusCode": 200, "body": results}
 
 
 if __name__ == "__main__":
